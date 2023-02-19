@@ -5,11 +5,27 @@ import { QUERY_USERS } from '../utils/queries';
 
 const Home = () => {
 const { loading, data } = useQuery(QUERY_USERS)
-// const users = data?.users || []
+const users = data?.users || []
 
 return (
     <div>
-       hello
+       {loading ? (
+        <div>
+            loading... : ()
+        </div>
+       ) : (
+        users.map((user) => (
+            <div>
+
+                <h1>
+                    {user.username}
+                </h1>
+                <h1>
+                    {user.email}
+                </h1>
+            </div>
+        ))
+       )}
     </div>
 )
 }
